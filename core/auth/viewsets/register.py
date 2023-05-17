@@ -30,3 +30,5 @@ class RegisterViewSet(ViewSet):
             },
             status=status.HTTP_201_CREATED,
         )
+
+

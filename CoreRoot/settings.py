@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+from .keys import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "*").split(",")
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -40,13 +42,28 @@ INSTALLED_APPS = [
 
     # packages
     'rest_framework',
+    'rest_auth',
     'rest_framework_simplejwt',
+    #'rest_framework_social_oauth2',
+    'rest_framework.authtoken',
 
     # apps
     'core',
     'core.user',
     'core.auth',
     'core.anime',
+    'core.log.apps',
+
+    #Oauth2.0
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'social_django',
+    'oauth2_provider',
+
+    #providers
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -85,9 +102,9 @@ WSGI_APPLICATION = 'CoreRoot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv("DATABASE_NAME", "animedb"),
-        'USER': os.getenv("DATABASE_USER", "admin"),
-        'PASSWORD': os.getenv("DATABASE_PASSWORD", "Animashka2023"),
+        'NAME': os.getenv("DATABASE_NAME", "anime_db"),
+        'USER': os.getenv("DATABASE_USER", "postgres"),
+        'PASSWORD': os.getenv("DATABASE_PASSWORD", "Bekhan2005"),
         'HOST': os.environ.get("DATABASE_HOST", "localhost"),
         'PORT': os.getenv("DATABASE_PORT", "5432"),
     }
