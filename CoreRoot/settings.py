@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+
+from django.urls import reverse_lazy
+
 from .keys import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,7 +47,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_auth',
     'rest_framework_simplejwt',
-    #'rest_framework_social_oauth2',
     'rest_framework.authtoken',
 
     # apps
@@ -142,10 +144,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -161,4 +159,7 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 15,
 }
 
-
+# app_name = 'auth'
+# LOGIN_REDIRECT_URL = reverse_lazy('auth:core')
+# LOGIN_URL = reverse_lazy('auth:login')
+# LOGOUT_REDIRECT_URL = reverse_lazy('auth:logout')

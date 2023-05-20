@@ -25,10 +25,6 @@ class VKSocialLoginSerializer(SocialLoginSerializer):
     adapter_class = VKOAuth2Adapter
     client_class = OAuth2Client
 
-    def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop('request', None)  # Получаем объект запроса
-        super().__init__(*args, **kwargs)
-
     def create(self, validated_data):
         # Use the `create_user` method we wrote earlier for the UserManager to create a new user.
         return User.objects.create_user(**validated_data)

@@ -4,3 +4,6 @@ from .register import (
     VKSocialLoginSerializer,
     RegisterSerializer,
 )
+
+from .auth2 import *
+from .login import *
